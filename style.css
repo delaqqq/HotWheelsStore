@@ -1,0 +1,611 @@
+:root {
+    --primary: #ff0000;
+    --secondary: #0044ff;
+    --bg: #0a0a0b;
+    --card-bg: #161618;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background-color: var(--bg);
+    color: white;
+}
+
+/* Шапка */
+header {
+    background: rgba(0, 0, 0, 0.9);
+    padding: 15px 0;
+    border-bottom: 2px solid var(--primary);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.header-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.logo {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 24px;
+    font-weight: 900;
+}
+.logo span { color: var(--primary); }
+
+.main-nav {
+    display: flex;
+    gap: 20px;
+}
+.main-nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    transition: 0.3s;
+}
+.main-nav a:hover, .main-nav a.active { color: var(--primary); }
+
+.user-block {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+.btn-auth, .btn-outline {
+    background: transparent;
+    border: 1px solid var(--primary);
+    color: var(--primary);
+    padding: 6px 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+.btn-auth:hover, .btn-outline:hover {
+    background: var(--primary);
+    color: white;
+}
+.cart-icon {
+    color: white;
+    text-decoration: none;
+    font-size: 24px;
+    position: relative;
+}
+.badge {
+    position: absolute;
+    top: -8px;
+    right: -12px;
+    background: var(--primary);
+    color: white;
+    border-radius: 50%;
+    padding: 2px 6px;
+    font-size: 12px;
+}
+
+/* Hero */
+.hero {
+    height: 60vh;
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://1000logos.net/wp-content/uploads/2023/03/Hot-Wheels-Logo-2010.png');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+.hero h1 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 3rem;
+    margin-bottom: 10px;
+}
+.btn-main {
+    background: var(--primary);
+    color: white;
+    padding: 12px 30px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    display: inline-block;
+    border: none;
+    cursor: pointer;
+    transition: 0.2s;
+}
+.btn-main:hover {
+    background: #cc0000;
+}
+
+/* Сітка товарів */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 25px;
+    padding: 20px;
+}
+.product-card {
+    background: var(--card-bg);
+    border-radius: 10px;
+    overflow: hidden;
+    transition: 0.2s;
+    cursor: pointer;
+    border: 1px solid #2a2a2a;
+}
+.product-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--primary);
+}
+.product-card img {
+    width: 100%;
+    height: 180px;
+    object-fit: contain;
+    background: #111;
+}
+.product-card h3 {
+    margin: 12px;
+    font-size: 1.2rem;
+}
+.product-card .price {
+    color: var(--primary);
+    font-weight: bold;
+    margin: 0 12px;
+    font-size: 1.2rem;
+}
+.product-card button {
+    background: var(--primary);
+    border: none;
+    color: white;
+    width: calc(100% - 24px);
+    margin: 12px;
+    padding: 8px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Пошук по центру */
+.search-wrapper {
+    max-width: 500px;
+    margin: 30px auto 20px;
+    padding: 0 20px;
+}
+#searchInput {
+    width: 100%;
+    padding: 12px 20px;
+    background: #1e1e24;
+    border: 1px solid #333;
+    border-radius: 60px;
+    color: white;
+    font-size: 1rem;
+    text-align: center;
+}
+#searchInput:focus {
+    border-color: var(--primary);
+    outline: none;
+}
+
+/* Категорії + каталог */
+.catalog-layout {
+    display: flex;
+    max-width: 1300px;
+    margin: 0 auto 40px;
+    gap: 30px;
+    padding: 0 20px;
+}
+.sidebar {
+    width: 240px;
+    background: #111;
+    padding: 20px;
+    border-radius: 12px;
+    height: fit-content;
+}
+.sidebar h3 {
+    margin-top: 0;
+    color: var(--primary);
+}
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+.sidebar li {
+    padding: 10px;
+    margin: 5px 0;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: 0.2s;
+}
+.sidebar li:hover, .sidebar li.active {
+    background: var(--primary);
+    color: white;
+}
+.catalog-content {
+    flex: 1;
+}
+
+/* Модальне вікно опису */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0,0,0,0.8);
+    z-index: 200;
+    align-items: center;
+    justify-content: center;
+}
+.modal-content {
+    background: var(--card-bg);
+    width: 500px;
+    max-width: 90%;
+    padding: 25px;
+    border-radius: 15px;
+    border: 1px solid var(--primary);
+}
+.product-modal img {
+    width: 100%;
+    border-radius: 10px;
+}
+.close {
+    float: right;
+    font-size: 28px;
+    cursor: pointer;
+}
+hr {
+    margin: 15px 0;
+    border-color: #333;
+}
+
+/* Сторінка Про нас */
+.about-page {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+.about-hero {
+    text-align: center;
+    margin-bottom: 40px;
+}
+.about-hero h1 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 2.5rem;
+    color: var(--primary);
+}
+.about-container {
+    display: flex;
+    gap: 40px;
+    flex-wrap: wrap;
+}
+.about-text {
+    flex: 1;
+    background: var(--card-bg);
+    padding: 30px;
+    border-radius: 16px;
+}
+.about-text h2 {
+    color: var(--primary);
+    margin-top: 20px;
+}
+.advantages {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    margin: 20px 0;
+}
+.adv-item i {
+    color: var(--primary);
+    margin-right: 10px;
+}
+.about-image {
+    flex: 1;
+}
+.about-image img {
+    width: 100%;
+    border-radius: 16px;
+}
+
+/* Сторінка кошика */
+.cart-page {
+    max-width: 1000px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+.cart-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+.cart-header h1 {
+    font-family: 'Orbitron', sans-serif;
+}
+.cart-content {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+.cart-items {
+    background: var(--card-bg);
+    border-radius: 16px;
+    overflow: hidden;
+}
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    border-bottom: 1px solid #2a2a2a;
+}
+.cart-item:last-child {
+    border-bottom: none;
+}
+.cart-item-info {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+.cart-item-img {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+    background: #111;
+    border-radius: 8px;
+}
+.cart-item-name {
+    font-weight: bold;
+    min-width: 150px;
+}
+.cart-item-price {
+    color: var(--primary);
+    font-weight: bold;
+}
+.remove-btn {
+    background: none;
+    border: none;
+    color: #ff4444;
+    font-size: 20px;
+    cursor: pointer;
+}
+.cart-summary {
+    background: var(--card-bg);
+    border-radius: 16px;
+    padding: 20px;
+    text-align: right;
+}
+.summary-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    font-size: 1.1rem;
+}
+.summary-row.total {
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: var(--primary);
+    border-top: 1px solid #333;
+    padding-top: 10px;
+    margin-top: 10px;
+}
+#checkoutBtn {
+    margin-top: 20px;
+    width: 100%;
+}
+.empty-cart {
+    text-align: center;
+    padding: 40px;
+}
+.empty-cart i {
+    font-size: 60px;
+    color: #555;
+}
+
+/* Футер */
+footer {
+    text-align: center;
+    padding: 20px;
+    background: #050505;
+    margin-top: 60px;
+}
+/* ===== ГАРНА МОДАЛКА АВТОРИЗАЦІЇ ===== */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(8px);
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-content {
+    background: linear-gradient(145deg, #1a1a24, #0f0f15);
+    width: 420px;
+    max-width: 90%;
+    padding: 30px;
+    border-radius: 28px;
+    border: 1px solid rgba(255, 0, 0, 0.3);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 0, 0, 0.2);
+    animation: modalFadeIn 0.3s ease;
+}
+
+@keyframes modalFadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.modal-content h2 {
+    font-family: 'Orbitron', monospace;
+    text-align: center;
+    margin-bottom: 25px;
+    color: #ff3333;
+    font-size: 1.8rem;
+}
+
+.auth-tabs {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 25px;
+    border-bottom: 1px solid #333;
+}
+
+.tab-btn {
+    background: none;
+    border: none;
+    padding: 10px 0;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #aaa;
+    cursor: pointer;
+    transition: 0.2s;
+    position: relative;
+}
+
+.tab-btn.active {
+    color: #ff3333;
+}
+
+.tab-btn.active::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: #ff3333;
+    border-radius: 2px;
+}
+
+.auth-form {
+    display: none;
+}
+
+.auth-form.active {
+    display: block;
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.auth-form input {
+    width: 100%;
+    padding: 14px 16px;
+    margin: 12px 0;
+    background: #0a0a0f;
+    border: 1px solid #2a2a35;
+    border-radius: 60px;
+    color: white;
+    font-size: 1rem;
+    transition: 0.2s;
+}
+
+.auth-form input:focus {
+    outline: none;
+    border-color: #ff3333;
+    box-shadow: 0 0 0 2px rgba(255, 51, 51, 0.2);
+}
+
+.auth-form button {
+    width: 100%;
+    margin-top: 10px;
+    background: linear-gradient(90deg, #ff3333, #cc0000);
+    border: none;
+    padding: 12px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.auth-form hr {
+    margin: 15px 0;
+    border-color: #2a2a35;
+}
+
+.close {
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    color: #aaa;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.close:hover {
+    color: #ff3333;
+}
+/* ===== МОДАЛКА ОФОРМЛЕННЯ ===== */
+.order-modal {
+    max-width: 450px;
+}
+
+.order-modal h2 {
+    text-align: center;
+    margin-bottom: 25px;
+    font-family: 'Orbitron', monospace;
+    color: #ff3333;
+}
+
+.input-group {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.input-group i {
+    position: absolute;
+    left: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #ff3333;
+    font-size: 1.1rem;
+    z-index: 1;
+}
+
+.input-group input, .input-group select {
+    width: 100%;
+    padding: 14px 16px 14px 45px;
+    background: #0a0a0f;
+    border: 1px solid #2a2a35;
+    border-radius: 60px;
+    color: white;
+    font-size: 1rem;
+    transition: 0.2s;
+}
+
+.input-group input:focus, .input-group select:focus {
+    outline: none;
+    border-color: #ff3333;
+    box-shadow: 0 0 0 2px rgba(255, 51, 51, 0.2);
+}
+
+.input-group select {
+    appearance: none;
+    cursor: pointer;
+}
+
+#orderForm button {
+    width: 100%;
+    margin-top: 10px;
+    background: linear-gradient(90deg, #ff3333, #cc0000);
+    font-size: 1.1rem;
+    padding: 14px;
+}

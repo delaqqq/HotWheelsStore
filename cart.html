@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Кошик - Wheels Store</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+<header>
+    <div class="header-container">
+        <div class="logo">HOT WHEELS <span>STORE</span></div>
+        <nav class="main-nav">
+            <a href="index.html">Головна</a>
+            <a href="catalog.html">Каталог</a>
+            <a href="about.html">Про нас</a>
+        </nav>
+        <div class="user-block">
+            <span id="userGreeting" class="user-greeting"></span>
+            <button id="logoutBtn" class="btn-outline" style="display: none;">Вихід</button>
+            <button class="btn-auth" id="loginBtn">Вхід</button>
+            <a href="cart.html" class="cart-icon">🛒 <span id="cartCount" class="badge">0</span></a>
+        </div>
+    </div>
+</header>
+
+<main class="cart-page">
+    <div class="cart-header">
+        <h1><i class="fas fa-shopping-cart"></i> Кошик</h1>
+        <a href="catalog.html" class="btn-outline"><i class="fas fa-arrow-left"></i> Продовжити покупки</a>
+    </div>
+    <div class="cart-content">
+        <div id="cartPageItems" class="cart-items"></div>
+        <div class="cart-summary">
+            <div class="summary-row">
+                <span>Всього товарів:</span>
+                <span id="cartTotalCount">0</span>
+            </div>
+            <div class="summary-row total">
+                <span>Загальна сума:</span>
+                <span id="totalPrice">0</span> ₴
+            </div>
+            <button id="checkoutBtn" class="btn-main">Оформити замовлення</button>
+        </div>
+    </div>
+
+    <div id="orderModal" class="modal">
+    <div class="modal-content order-modal">
+        <span class="close" onclick="closeOrderModal()">&times;</span>
+        <h2><i class="fas fa-truck"></i> Оформлення замовлення</h2>
+        <form id="orderForm">
+            <div class="input-group">
+                <i class="fas fa-user"></i>
+                <input type="text" id="fullName" placeholder="ПІБ" required>
+            </div>
+            <div class="input-group">
+                <i class="fas fa-map-marker-alt"></i>
+                <input type="text" id="address" placeholder="Адреса доставки" required>
+            </div>
+            <div class="input-group">
+                <i class="fas fa-phone-alt"></i>
+                <input type="tel" id="phone" placeholder="Телефон" required>
+            </div>
+            <div class="input-group">
+                <i class="fas fa-credit-card"></i>
+                <select id="payment">
+                    <option>Карткою онлайн</option>
+                    <option>Післяплата</option>
+                    <option>Готівка при отриманні</option>
+                </select>
+            </div>
+            <button type="submit" class="btn-main">Підтвердити замовлення</button>
+        </form>
+    </div>
+</div>
+</main>
+
+<footer><div class="footer-content"><p>© 2025 Wheels Store Магазин іграшок</p></div></footer>
+<script src="script.js"></script>
+</body>
+</html>
